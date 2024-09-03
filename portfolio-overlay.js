@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const link = document.createElement('a');
         link.href = `${targetUrl}/${item.urlId}`;
-        link.target = '_blank';
 
         const image = item.element;
         const title = document.createElement('h2');
