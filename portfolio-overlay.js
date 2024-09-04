@@ -105,7 +105,7 @@
                 urlId: item.urlId
               });
             });
-            console.log('Script is working.');
+            console.log('🚀 SquareHero.store Portfolio Overlay plugin loaded');
           })
           .catch(error => console.error('Error preloading images:', error));
       }
