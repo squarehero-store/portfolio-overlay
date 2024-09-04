@@ -1,5 +1,5 @@
 // ==================================================
-//   ⚡ Portfolio Overlay plugin v0.3.0 by SquareHero 
+//   ⚡ Portfolio Overlay plugin v0.2.2 by SquareHero 
 // ==================================================
 (function() {
   function initializePortfolioOverlay() {
