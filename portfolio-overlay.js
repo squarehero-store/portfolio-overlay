@@ -18,6 +18,11 @@
         targetUrl = '/' + targetUrl;
       }
 
+      // Function to check if the device is mobile
+      function isMobile() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      }
+
       // Get the base URL of the site
       var baseUrl = window.location.origin;
 
@@ -26,35 +31,44 @@
       jsonUrl = jsonUrl.includes('?') ? jsonUrl + '&format=json' : jsonUrl + '?format=json';
       var finalUrl = jsonUrl + cacheBuster;
 
-      // Create the overlay div
-      var overlay = document.createElement('div');
-      overlay.id = 'portfolioOverlay';
-      overlay.setAttribute('role', 'dialog');
-      overlay.setAttribute('aria-modal', 'true');
-      overlay.setAttribute('aria-hidden', 'true');
-
-      // Create the content div
-      var content = document.createElement('div');
-      content.className = 'overlay-content';
-      overlay.appendChild(content);
-      document.body.appendChild(overlay);
-
-      // Create the close button
-      var closeButton = document.createElement('button');
-      closeButton.className = 'close-button';
-      closeButton.innerHTML = '&times;';
-      closeButton.setAttribute('aria-label', 'Close overlay');
-      overlay.appendChild(closeButton);
-
-      // Add event listener to the close button
-      closeButton.addEventListener('click', function() {
-        overlay.classList.remove('visible');
+      // Only create overlay elements if not on mobile
+      var overlay, content, closeButton;
+      if (!isMobile()) {
+        // Create the overlay div
+        overlay = document.createElement('div');
+        overlay.id = 'portfolioOverlay';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
         overlay.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('no-scroll');
-      });
+
+        // Create the content div
+        content = document.createElement('div');
+        content.className = 'overlay-content';
+        overlay.appendChild(content);
+        document.body.appendChild(overlay);
+
+        // Create the close button
+        closeButton = document.createElement('button');
+        closeButton.className = 'close-button';
+        closeButton.innerHTML = '&times;';
+        closeButton.setAttribute('aria-label', 'Close overlay');
+        overlay.appendChild(closeButton);
+
+        // Add event listener to the close button
+        closeButton.addEventListener('click', function() {
+          overlay.classList.remove('visible');
+          overlay.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('no-scroll');
+        });
+      }
 
       // Function to handle target button click
       function handlePortfolioButtonClick(event) {
+        if (isMobile()) {
+          // On mobile, allow the default behavior (navigate to the targetUrl)
+          return;
+        }
+        
         event.preventDefault();
         overlay.classList.add('visible');
         overlay.setAttribute('aria-hidden', 'false');

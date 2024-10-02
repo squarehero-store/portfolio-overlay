@@ -7,7 +7,7 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
@@ -128,7 +128,7 @@
 }
 .grid .portfolio-overlay-item h2,
 .grid .view-all h2 {
-  text-align: center;
+  text-align: left;
   margin-top: 10px;
   color: white;
   position: absolute;
@@ -137,6 +137,14 @@
   font-weight: 500;
   margin: 0;
   padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 1.2em;
+  line-height: 1.2em;
   z-index: 3;
 }
 .grid .portfolio-overlay-item img,
