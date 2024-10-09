@@ -110,6 +110,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  font-family: var(--body-font-font-family);
 }
 .grid .portfolio-overlay-item a:before,
 .grid .view-all a:before {
